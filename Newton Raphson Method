@@ -1,0 +1,43 @@
+import numpy as np
+import pandas as pd
+import math
+
+def f(x):
+  return x**3 - 0.165*x**2 + 0.0003993 ;
+
+def g(x):
+    return 3*x**2 - 2*0.165*x;
+
+def newtonRaphson(x0,N):
+    step = 1
+    flag = 1
+    condition = True
+    while condition:
+        if g(x0) == 0.0:
+            print('Divide by zero error!')
+            break
+
+        x1 = x0 - f(x0)/g(x0)
+        rel_error = abs((x1-x0)/x1)
+        x = rel_error*100
+        sig_digits=-round(math.log10(abs(rel_error)))
+        print('Iteration-%d, xm = %0.6f, Relative Error = %0.6f, Significant Digits = %d' % (step, x1, x, sig_digits))
+
+        x0 = x1
+        step = step + 1
+
+        if step > N:
+            flag = 0
+            break
+
+x0 = input('Enter Guess: ')
+
+N = input('Number of Iteration: ')
+
+x0 = float(x0)
+
+# Converting N to integer
+N = int(N)
+
+
+newtonRaphson(x0,N)
