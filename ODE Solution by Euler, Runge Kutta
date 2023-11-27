@@ -50,7 +50,12 @@ def ralston_method(f, t0, y0, h, num_steps):
 
 # Comparison function
 def compare_methods():
-    t, t0, y0, h = 480, 0, 1200, 240
+    t = int(input("Enter t: "))
+    t0 = int(input("Enter t0: "))
+    y0 = int(input("Enter y0: "))
+    h = int(input("Enter h: "))
+
+    #t, t0, y0, h = 480, 0, 1200, 240
     num_steps = int(t / h)
 
     # Euler's method
@@ -86,7 +91,7 @@ def compare_methods():
 
 
     # Plotting
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 8))
     plt.plot(t_euler, y_euler, label='Euler')
     plt.plot(t_heun, y_heun, label="Heun's Method")
     plt.plot(t_midpoint, y_midpoint, label='Midpoint Method')
